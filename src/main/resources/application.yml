@@ -1,6 +1,11 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/world?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/restful?serverTimezone=UTC
     username: root
     password: 1a2a3a4a
+server:
+  port: 8081
+logging:
+  level:
+    org.springframework: debug
