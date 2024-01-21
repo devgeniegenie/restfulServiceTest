@@ -4,6 +4,8 @@ import com.example.restfulservicetest.bean.User;
 import com.example.restfulservicetest.dao.UserDaoService;
 import com.example.restfulservicetest.exception.UserNotFoundException;
 import jakarta.validation.Valid;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -26,14 +28,19 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public User retrieveUser(@PathVariable int id) {
+    public EntityModel<User> retrieveUser(@PathVariable int id) {
         User user = userDaoService.findOne(id);
 
         if (user == null) {
             throw new UserNotFoundException(String.format("ID[%s] not found", id));
         }
 
-        return user;
+        EntityModel entityModel = EntityModel.of(user);
+
+        WebMvcLinkBuilder linkTo = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).retrieveAllUsers());
+        entityModel.add(linkTo.withRel("all-users"));
+
+        return entityModel;
     }
 
     @PostMapping("/users")
