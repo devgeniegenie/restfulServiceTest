@@ -6,6 +6,9 @@ spring:
     password: 1a2a3a4a
   messages:
     basename: messages
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 server:
   port: 8081

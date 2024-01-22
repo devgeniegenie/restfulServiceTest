@@ -3,7 +3,7 @@ package com.example.restfulservicetest.controller;
 import com.example.restfulservicetest.bean.User;
 import com.example.restfulservicetest.dao.UserDaoService;
 import com.example.restfulservicetest.exception.UserNotFoundException;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
