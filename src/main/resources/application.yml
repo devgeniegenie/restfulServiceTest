@@ -6,9 +6,11 @@ spring:
     password: 1a2a3a4a
   messages:
     basename: messages
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
+
+#  security:
+#    user:
+#      name: username
+#      password: 1234
 
 server:
   port: 8081
@@ -16,3 +18,9 @@ server:
 logging:
   level:
     org.springframework: info
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
