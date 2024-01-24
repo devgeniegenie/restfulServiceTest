@@ -1,11 +1,16 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/restful?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3336/restful?serverTimezone=UTC
     username: root
     password: 1a2a3a4a
   messages:
     basename: messages
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    defer-datasource-initialization: true
 
 #  security:
 #    user:
